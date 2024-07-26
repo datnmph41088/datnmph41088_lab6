@@ -86,4 +86,20 @@ class PostController extends Controller
         Post::query()->create($data);
         return redirect()->route('post.index')->with('message', 'Thêm dữ liệu thành công');
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('post.index')->with('message', 'Xoá dữ liệu thành công');
+    }
+
+    public function edit(Post $post)
+    {
+        $categories = Category::all();
+        return view("admin.posts.edit", compact("categories", "post"));
+    }
+
+    public function update(Request $request)
+    {
+    }
 }

@@ -9,15 +9,21 @@
 </head>
 
 <body>
-    <h1>Danh sách sách</h1>
-    <table class="table">
+    <h1>Danh sách bài viết</h1>
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+    @endif
+
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">#ID</th>
+                <th scope="col">ID</th>
                 <th scope="col">Title</th>
                 <th scope="col">Image</th>
-                <th scope="col">Description</th>
-                <th scope="col">view</th>
+                <th scope="col">Desc</th>
+                <th scope="col">View</th>
                 <th scope="col">Cate</th>
                 <th scope="col">
                     <a href="{{ route('post.create') }}" class="btn btn-primary">Thêm mới</a>
@@ -26,24 +32,24 @@
         </thead>
         <tbody>
             @foreach ($posts as $post)
-                <tr>
-                    <th scope="row">{{ $post->id }}</th>
-                    <td>{{ $post->title }}</td>
-                    <td>
-                        <img src="{{ asset('/storage/' . $post->image) }}" width="50" alt="">
-                    </td>
-                    <td>{{ $post->description }}</td>
-                    <td>{{ $post->view }}</td>
-                    <td>{{ $post->category->name }}</td>
-                    <td class="d-flex gap-1">
-                        <a href="{{ route('post.edit', $post) }}" class="btn btn-primary">Edit</a>
-                        <form action="{{ route('post.destroy', $post) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+            <tr>
+                <td>{{ $post->id }}</td>
+                <td>{{ $post->title }}</td>
+                <td>
+                    <img src="{{ asset('/storage/' . $post->image) }}" width="50" alt="">
+                </td>
+                <td>{{ $post->desc }}</td>
+                <td>{{ $post->view }}</td>
+                <td>{{ $post->category->name }}</td>
+                <td class="d-flex gap-2">
+                    <a href="{{ route('post.edit', $post) }}" class="btn btn-primary">Edit</a>
+                    <form action="{{ route('post.destroy', $post) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="return confirm('Bạn có muốn xoá không?')" type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>

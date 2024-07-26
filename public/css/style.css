@@ -1,0 +1,190 @@
+/* Existing styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+.book-section, .category-section {
+    margin-bottom: 40px;
+}
+
+.book-item, .category-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fdfdfd;
+    border-radius: 5px;
+    text-align: start;
+}
+
+.book-item a, .category-item a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.book-item a:hover, .category-item a:hover {
+    text-decoration: underline;
+}
+
+.book-item span, .category-item span {
+    display: block;
+    margin-top: 5px;
+    color: #555;
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Header styles */
+header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* New styles for the grid layout */
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.book-grid .book-item {
+    flex: 1 1 calc(25% - 15px);
+    box-sizing: border-box;
+}
+
+/* public/css/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+a, button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+a.btn, button.btn {
+    background-color: #5cb85c;
+}
+
+a.btn-warning {
+    background-color: #f0ad4e;
+}
+
+a.btn-danger, button.btn-danger {
+    background-color: #d9534f;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    border: 1px solid #d6e9c6;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
