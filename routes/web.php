@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminControoler;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\UserController;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
@@ -125,3 +129,20 @@ Route::get('/movie/edit/{movie}', [MovieController::class, 'edit'])->name('movie
 Route::put('/movie/edit/{movie}', [MovieController::class, 'update'])->name('movies.update');
 Route::delete('/movie/delete/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 Route::get('/movies/search', [MovieController::class, 'search'])->name('movies.search');
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', [AdminControoler::class, 'dashboard'])->name('admin.dashboard')->middleware('admin', 'auth');
+    Route::post('/toggle-activation/{id}', [AdminControoler::class, 'toggleActivation'])->name('admin.toggleActivation');
+});
+Route::get('/welcome', [UserController::class, 'index'])->name('welcome')->middleware('auth');
+Route::post('/welcome', [UserController::class, 'update'])->middleware('auth');
+Route::get('/welcome/change-password', [UserController::class, 'changePasswordForm'])->middleware('auth')->name('changePassword');
+Route::post('/welcome/change-password', [UserController::class, 'changePassword'])->middleware('auth')->name('changePassword');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+// authenticated
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login'])->middleware('pre_login');
+Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [AuthController::class, 'register']);
